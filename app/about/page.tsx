@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import aboutData from "../_raw/about.json";
+import { getRawPageData } from "@/lib/raw-data";
 import FramerScriptsRunner from "@/components/FramerScriptsRunner";
 
 export const metadata: Metadata = {
@@ -8,6 +8,8 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  const aboutData = getRawPageData("about.json");
+
   return (
     <>
       <div suppressHydrationWarning dangerouslySetInnerHTML={{ __html: aboutData.styles }} />

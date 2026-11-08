@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { getRawPageData } from "@/lib/raw-data";
 import FramerScriptsRunner from "@/components/FramerScriptsRunner";
 
 const validBlogSlugs = [
@@ -30,7 +31,7 @@ export default function BlogSlugPage({ params }: { params: { slug: string } }) {
     notFound();
   }
 
-  const data = require(`@/app/_raw/blog_${params.slug}.json`);
+  const data = getRawPageData(`blog_${params.slug}.json`);
 
   return (
     <>

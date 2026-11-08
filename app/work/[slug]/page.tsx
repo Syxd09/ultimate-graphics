@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { getRawPageData } from "@/lib/raw-data";
 import FramerScriptsRunner from "@/components/FramerScriptsRunner";
 
 const validSlugs = [
@@ -27,8 +28,7 @@ export default function WorkSlugPage({ params }: { params: { slug: string } }) {
     notFound();
   }
 
-  // Load the corresponding JSON data
-  const data = require(`@/app/_raw/work_${params.slug}.json`);
+  const data = getRawPageData(`work_${params.slug}.json`);
 
   return (
     <>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import contactData from "../_raw/contact.json";
+import { getRawPageData } from "@/lib/raw-data";
 import FramerScriptsRunner from "@/components/FramerScriptsRunner";
 
 export const metadata: Metadata = {
@@ -8,6 +8,8 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  const contactData = getRawPageData("contact.json");
+
   return (
     <>
       <div suppressHydrationWarning dangerouslySetInnerHTML={{ __html: contactData.styles }} />

@@ -1,3 +1,4 @@
+#__framer-badge-container, .__framer-badge, [data-framer-name="Light"].__framer-badge, a[href*="framer.com"] { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; width: 0 !important; height: 0 !important; overflow: hidden !important; }
 
 /* From about.json */
 /* cyrillic-ext */
