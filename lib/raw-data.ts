@@ -15,3 +15,4 @@ export function getRawPageData(fileName: string): RawPageData {
   const content = fs.readFileSync(filePath, "utf-8");
   return JSON.parse(content) as RawPageData;
 }
+
