@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <>
-      <div dangerouslySetInnerHTML={{ __html: blogData.styles }} />
-      <div dangerouslySetInnerHTML={{ __html: blogData.mainHtml }} />
+      <div suppressHydrationWarning dangerouslySetInnerHTML={{ __html: blogData.styles }} />
+      <div suppressHydrationWarning dangerouslySetInnerHTML={{ __html: blogData.mainHtml }} />
       <FramerScriptsRunner scriptsHtml={blogData.scripts} />
     </>
   );

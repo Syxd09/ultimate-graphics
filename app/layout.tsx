@@ -63,7 +63,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="stylesheet" href="/styles/lenis.css" />
         <link rel="icon" href="/logos/symbol-logo.jpeg" type="image/jpeg" />
@@ -139,7 +139,7 @@ export default function RootLayout({
           }
         `}} />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <ReloadingCurtain />
         <JsonLd />
         {children}

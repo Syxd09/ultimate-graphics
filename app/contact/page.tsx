@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <div dangerouslySetInnerHTML={{ __html: contactData.styles }} />
-      <div dangerouslySetInnerHTML={{ __html: contactData.mainHtml }} />
+      <div suppressHydrationWarning dangerouslySetInnerHTML={{ __html: contactData.styles }} />
+      <div suppressHydrationWarning dangerouslySetInnerHTML={{ __html: contactData.mainHtml }} />
       <FramerScriptsRunner scriptsHtml={contactData.scripts} />
     </>
   );

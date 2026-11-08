@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 export default function WorkPage() {
   return (
     <>
-      <div dangerouslySetInnerHTML={{ __html: workData.styles }} />
-      <div dangerouslySetInnerHTML={{ __html: workData.mainHtml }} />
+      <div suppressHydrationWarning dangerouslySetInnerHTML={{ __html: workData.styles }} />
+      <div suppressHydrationWarning dangerouslySetInnerHTML={{ __html: workData.mainHtml }} />
       <FramerScriptsRunner scriptsHtml={workData.scripts} />
     </>
   );

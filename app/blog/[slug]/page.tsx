@@ -34,8 +34,8 @@ export default function BlogSlugPage({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      <div dangerouslySetInnerHTML={{ __html: data.styles }} />
-      <div dangerouslySetInnerHTML={{ __html: data.mainHtml }} />
+      <div suppressHydrationWarning dangerouslySetInnerHTML={{ __html: data.styles }} />
+      <div suppressHydrationWarning dangerouslySetInnerHTML={{ __html: data.mainHtml }} />
       <FramerScriptsRunner scriptsHtml={data.scripts} />
     </>
   );

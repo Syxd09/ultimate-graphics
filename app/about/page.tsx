@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <div dangerouslySetInnerHTML={{ __html: aboutData.styles }} />
-      <div dangerouslySetInnerHTML={{ __html: aboutData.mainHtml }} />
+      <div suppressHydrationWarning dangerouslySetInnerHTML={{ __html: aboutData.styles }} />
+      <div suppressHydrationWarning dangerouslySetInnerHTML={{ __html: aboutData.mainHtml }} />
       <FramerScriptsRunner scriptsHtml={aboutData.scripts} />
     </>
   );
