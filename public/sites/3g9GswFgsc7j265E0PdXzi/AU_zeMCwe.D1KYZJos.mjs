@@ -1,6 +1,12 @@
 
 function __clean(val) {
   if (typeof val === 'string') {
+    if (val === 'how-to-pick-the-right-platform-framer-vs-Cast Acrylic-vs-custom' || val === 'how-to-pick-the-right-platform-framer-vs-Cast%20Acrylic-vs-custom') {
+      return 'how-to-pick-the-right-platform-framer-vs-webflow-vs-custom';
+    }
+    if (val.startsWith('http://') || val.startsWith('https://') || val.startsWith('/') || (val.includes('-') && !val.includes(' ') && !val.includes(':') && !val.includes('.'))) {
+      return val;
+    }
     let s = val;
     s = s.replace(/Johny Nashville/gi, 'Metro Flagship Retail');
     s = s.replace(/\bSEO\b/g, 'FABRICATION');
@@ -45,7 +51,11 @@ function __clean(val) {
   if (val && typeof val === 'object') {
     let res = {};
     for (let k in val) {
-      res[k] = __clean(val[k]);
+      if (k === 'slug' || k === 'CtXyYJW9C' || k === 'id' || k === 'yAqIGPunC' || k === 'sYpw7tnUL' || k === 'url' || k === 'path' || k === 'file' || k === 'pointer' || k.toLowerCase().includes('slug')) {
+        res[k] = val[k];
+      } else {
+        res[k] = __clean(val[k]);
+      }
     }
     return res;
   }

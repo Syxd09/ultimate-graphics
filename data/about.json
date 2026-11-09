@@ -1,0 +1,50 @@
+{
+  "name": "Ultimate Graphics®",
+  "legalName": "Ultimate Graphics London Ltd",
+  "tagline": "Premier Architectural Signage, 12kW Fiber Laser, 5-Axis CNC & Commercial Fleet Studio",
+  "established": "2014",
+  "description": "London architectural signage and commercial fabrication studio established in 2014. In-house 12kW fiber laser cutting, 5-axis CNC routing, illuminated channel letters, and 3M certified fleet branding with 2-hour quote SLA.",
+  "url": "https://ultimategraphics.com",
+  "logos": {
+    "main": "/logos/main-logo.png",
+    "footer": "/logos/footer-logo.png",
+    "symbol": "/logos/symbol-logo.jpeg"
+  },
+  "facility": {
+    "size": "24,000 sq ft",
+    "location": "Central London Industrial Park",
+    "machinery": [
+      { "name": "Bystronic 12kW Fiber Laser Bed", "specs": "4000mm x 2000mm, cut up to 30mm stainless / aluminum" },
+      { "name": "5-Axis Multicam CNC Router", "specs": "High-speed precision architectural non-ferrous milling" },
+      { "name": "SwissQprint 3.2m UV Flatbed", "specs": "Direct architectural glass, brass, wood, and acrylic printing" },
+      { "name": "Climate-Controlled Vehicle Bay", "specs": "4-van simultaneous installation capacity with 3M certification" }
+    ]
+  },
+  "contact": {
+    "phone": "+44 20 7946 0192",
+    "phoneDisplay": "+44 (0) 20 7946 0192",
+    "email": "hello@ultimategraphics.com",
+    "address": "124 Industrial Way",
+    "city": "London",
+    "postcode": "EC1V 2NX",
+    "country": "United Kingdom",
+    "hours": {
+      "weekdays": "Mon–Fri: 09:00 – 18:00",
+      "saturday": "Sat: 10:00 – 16:00",
+      "sunday": "Closed"
+    },
+    "sla": "We usually respond to all signage & print enquiries within 2 business hours."
+  },
+  "director": {
+    "name": "David Miller",
+    "title": "Production & Signage Director",
+    "quote": "I'll personally review your signage & print brief and get back to you within two hours.",
+    "avatar": "/images/wlJMtkRVckBTirLzGQd8qmCMDw.jpg?width=83&height=83"
+  },
+  "socials": {
+    "instagram": "https://www.instagram.com/",
+    "twitter": "https://x.com/ultimategraphics",
+    "googleReviews": "https://g.page/r/CWCJQgHfoJUPEAE/review"
+  }
+}
+

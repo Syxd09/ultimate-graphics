@@ -10,10 +10,16 @@ export default function JsonLd() {
     logo: "https://ultimategraphics.com/images/AZdKLugP6NzACkX2hBYq9K4wFQ.jpg",
     description:
       "Ultimate Graphics® is a London architectural signage and commercial fabrication studio established in 2014. In-house 12kW fiber laser cutting, 5-axis CNC routing, automated channel letters, and 3M commercial fleet branding with 2-hour quote SLA.",
-    telephone: "+1 (555) 400 2014",
+    telephone: "+44 20 7946 0192",
     email: "hello@ultimategraphics.com",
     foundingDate: "2014-04-01",
     priceRange: "Bespoke / Custom Quote",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.6",
+      bestRating: "5",
+      ratingCount: "280",
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress: "124 Industrial Way",

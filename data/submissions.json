@@ -1,0 +1,29 @@
+[
+  {
+    "id": "sub_1794241045037_5y4gb",
+    "name": "Test Dropdown Fix",
+    "email": "test@example.com",
+    "service": "3D Channel Letters & Neon Signs",
+    "message": "Testing dropdown close and submission flow",
+    "source": "Website Contact Form",
+    "status": "new",
+    "notes": "",
+    "createdAt": "2026-11-09T16:17:25.037Z",
+    "updatedAt": "2026-11-09T16:17:25.037Z",
+    "ip": "::1"
+  },
+  {
+    "id": "sub_1794174150431_zfklx",
+    "name": "Marcus Vance",
+    "email": "m.vance@vancestudio.co.uk",
+    "phone": "+44 20 7946 0912",
+    "service": "Custom Architectural Signage",
+    "message": "We require 2 external illuminated fascia monument signs for our new Mayfair gallery project. High-grade stainless steel with 3000K warm halo glow.",
+    "source": "Website Contact Form",
+    "status": "new",
+    "notes": "",
+    "createdAt": "2026-11-08T21:42:30.431Z",
+    "updatedAt": "2026-11-08T21:42:30.431Z",
+    "ip": "::1"
+  }
+]

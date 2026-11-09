@@ -5,20 +5,48 @@ import Link from "next/link";
 import { siteConfig } from "@/config/site";
 
 export default function Footer() {
-  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     service: "Vehicle Branding & Vehicle Stickering",
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus("submitting");
-    setTimeout(() => {
+    setErrorMessage("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          source: "Footer Quote Form",
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Submission failed. Please try again.");
+      }
+
       setFormStatus("success");
-    }, 600);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        service: "Vehicle Branding & Vehicle Stickering",
+        message: "",
+      });
+    } catch (err: any) {
+      setErrorMessage(err.message || "Failed to submit quote request. Please try again.");
+      setFormStatus("error");
+    }
   };
 
   return (
@@ -195,7 +223,7 @@ export default function Footer() {
           ) : (
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.2rem" }}>
               <div>
-                <label style={{ display: "block", fontSize: "0.85rem", color: "rgba(255, 255, 255, 0.6)", marginBottom: "6px" }}>
+                <label style={{ display: "block", fontSize: "0.85rem", color: "rgba(255, 255, 255, 0.6)", marginBottom: "6px", fontFamily: "'Geist', sans-serif" }}>
                   Your Name *
                 </label>
                 <input
@@ -207,42 +235,67 @@ export default function Footer() {
                   style={{
                     width: "100%",
                     padding: "12px 14px",
-                    backgroundColor: "rgba(255, 255, 255, 0.05)",
+                    backgroundColor: "rgba(255, 255, 255, 0.03)",
                     border: "1px solid rgba(255, 255, 255, 0.15)",
-                    borderRadius: "6px",
+                    borderRadius: "0px",
                     color: "#ffffff",
                     fontSize: "0.95rem",
+                    fontFamily: "'Geist', sans-serif",
                     outline: "none",
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: "block", fontSize: "0.85rem", color: "rgba(255, 255, 255, 0.6)", marginBottom: "6px" }}>
+                <label style={{ display: "block", fontSize: "0.85rem", color: "rgba(255, 255, 255, 0.6)", marginBottom: "6px", fontFamily: "'Geist', sans-serif" }}>
                   Work Email *
                 </label>
                 <input
                   type="email"
                   required
-                  placeholder="name@company.com"
+                  placeholder="example@email.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   style={{
                     width: "100%",
                     padding: "12px 14px",
-                    backgroundColor: "rgba(255, 255, 255, 0.05)",
+                    backgroundColor: "rgba(255, 255, 255, 0.03)",
                     border: "1px solid rgba(255, 255, 255, 0.15)",
-                    borderRadius: "6px",
+                    borderRadius: "0px",
                     color: "#ffffff",
                     fontSize: "0.95rem",
+                    fontFamily: "'Geist', sans-serif",
                     outline: "none",
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: "block", fontSize: "0.85rem", color: "rgba(255, 255, 255, 0.6)", marginBottom: "6px" }}>
-                  Fabrication & Signage Capability
+                <label style={{ display: "block", fontSize: "0.85rem", color: "rgba(255, 255, 255, 0.6)", marginBottom: "6px", fontFamily: "'Geist', sans-serif" }}>
+                  Phone / WhatsApp (Optional)
+                </label>
+                <input
+                  type="tel"
+                  placeholder="+44 20 7946 0192"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  style={{
+                    width: "100%",
+                    padding: "12px 14px",
+                    backgroundColor: "rgba(255, 255, 255, 0.03)",
+                    border: "1px solid rgba(255, 255, 255, 0.15)",
+                    borderRadius: "0px",
+                    color: "#ffffff",
+                    fontSize: "0.95rem",
+                    fontFamily: "'Geist', sans-serif",
+                    outline: "none",
+                  }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: "block", fontSize: "0.85rem", color: "rgba(255, 255, 255, 0.6)", marginBottom: "6px", fontFamily: "'Geist', sans-serif" }}>
+                  What are you looking for?
                 </label>
                 <select
                   value={formData.service}
@@ -252,9 +305,10 @@ export default function Footer() {
                     padding: "12px 14px",
                     backgroundColor: "#161616",
                     border: "1px solid rgba(255, 255, 255, 0.15)",
-                    borderRadius: "6px",
+                    borderRadius: "0px",
                     color: "#ffffff",
                     fontSize: "0.95rem",
+                    fontFamily: "'Geist', sans-serif",
                     outline: "none",
                     cursor: "pointer",
                   }}
@@ -271,27 +325,44 @@ export default function Footer() {
               </div>
 
               <div>
-                <label style={{ display: "block", fontSize: "0.85rem", color: "rgba(255, 255, 255, 0.6)", marginBottom: "6px" }}>
-                  Project Details / Dimensions (Optional)
+                <label style={{ display: "block", fontSize: "0.85rem", color: "rgba(255, 255, 255, 0.6)", marginBottom: "6px", fontFamily: "'Geist', sans-serif" }}>
+                  Project Description / Specifications
                 </label>
                 <textarea
                   rows={3}
-                  placeholder="Outline dimensions, materials, or installation location..."
+                  placeholder="Describe your project: dimensions, materials, location, or timeline..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   style={{
                     width: "100%",
                     padding: "12px 14px",
-                    backgroundColor: "rgba(255, 255, 255, 0.05)",
+                    backgroundColor: "rgba(255, 255, 255, 0.03)",
                     border: "1px solid rgba(255, 255, 255, 0.15)",
-                    borderRadius: "6px",
+                    borderRadius: "0px",
                     color: "#ffffff",
                     fontSize: "0.95rem",
+                    fontFamily: "'Geist', sans-serif",
                     outline: "none",
                     resize: "vertical",
                   }}
                 />
               </div>
+
+              {formStatus === "error" && (
+                <div
+                  style={{
+                    padding: "10px 14px",
+                    backgroundColor: "rgba(239, 68, 68, 0.1)",
+                    border: "1px solid #ef4444",
+                    borderRadius: "0px",
+                    color: "#fca5a5",
+                    fontSize: "0.85rem",
+                    fontFamily: "'Geist', sans-serif",
+                  }}
+                >
+                  {errorMessage}
+                </div>
+              )}
 
               <button
                 type="submit"
@@ -301,15 +372,17 @@ export default function Footer() {
                   backgroundColor: "#ffffff",
                   color: "#0b0b0b",
                   border: "none",
-                  borderRadius: "6px",
+                  borderRadius: "0px",
                   fontWeight: 700,
-                  fontSize: "1rem",
-                  cursor: "pointer",
-                  transition: "background-color 0.2s ease, transform 0.1s ease",
-                  marginTop: "0.5rem",
+                  fontSize: "0.9rem",
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                  fontFamily: "'Geist', sans-serif",
+                  cursor: formStatus === "submitting" ? "not-allowed" : "pointer",
+                  transition: "background-color 0.2s ease",
                 }}
               >
-                {formStatus === "submitting" ? "Sending Request..." : "Submit Quote Request"}
+                {formStatus === "submitting" ? "Transmitting..." : "Send Message"}
               </button>
 
               <p style={{ margin: "0.5rem 0 0 0", fontSize: "0.75rem", color: "rgba(255, 255, 255, 0.4)", textAlign: "center" }}>
@@ -373,7 +446,10 @@ export default function Footer() {
           © {siteConfig.established}–2026 {siteConfig.name}. All rights reserved.
         </div>
 
-        <div style={{ display: "flex", gap: "20px" }}>
+        <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+          <Link href="/admin" style={{ color: "rgba(255, 255, 255, 0.4)", textDecoration: "none", fontSize: "0.8rem" }}>
+            Admin Portal
+          </Link>
           <Link href="/legal/privacy-policy" style={{ color: "inherit", textDecoration: "none" }}>
             Privacy Policy
           </Link>
@@ -385,6 +461,9 @@ export default function Footer() {
           </a>
           <a href={siteConfig.socials.twitter} target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "none" }}>
             X (Twitter)
+          </a>
+          <a href={siteConfig.socials.googleReviews || "https://g.page/r/CWCJQgHfoJUPEAE/review"} target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "none" }}>
+            Google Reviews
           </a>
         </div>
       </div>
